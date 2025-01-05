@@ -9,7 +9,7 @@ const App = () => {
 
   const handleData = (data) => {
     SetNavData(data);
-    console.log(NavData);
+    //console.log(NavData);
   };
 
   return (

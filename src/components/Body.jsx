@@ -6,8 +6,9 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 const Body = ({ imgKeyword }) => {
   const [imgData, setImgData] = useState();
-  console.log(imgKeyword);
+  //console.log(imgKeyword);
   const [page, setPage] = useState(10);
+  const storeLike = [];
 
   useEffect(() => {
     if (imgKeyword && imgKeyword.trim()) {
@@ -28,12 +29,16 @@ const Body = ({ imgKeyword }) => {
     }
   }, [imgKeyword, page]);
 
-  console.log(imgData);
+  //console.log(imgData);
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
       {imgData?.map((image) => (
-        <Card key={image.id} url={image?.links?.download} />
+        <Card
+          storeLike={storeLike}
+          // key={image?.id}
+          url={image?.links?.download}
+        />
       ))}
       <button
         onClick={() => {
