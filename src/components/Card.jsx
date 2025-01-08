@@ -1,26 +1,26 @@
 import { useState } from "react";
 
 const Card = ({ url }) => {
-  const [like, setLike] = useState(false);
+  const [like, setLike] = useState("false");
   const likeHandler = (url) => {
-    if (!like) {
+    if (like === "false") {
       let currentData = JSON.parse(localStorage.getItem("dataArray")) || [];
       currentData.push(url);
 
       // Store the updated array in localStorage using 'dataArray' as the key
       localStorage.setItem("dataArray", JSON.stringify(currentData));
+      setLike("true");
     } else {
       let currentData = JSON.parse(localStorage.getItem("dataArray")) || [];
       // console.log(currentData);
       // console.log("bhai chal to rha ha ");
       // Filter out the item that matches the given id
-      const updatedData = currentData.filter((item) => item.url !== url);
+      const updatedData = currentData.filter((item) => item !== url);
 
       // Store the updated array back to localStorage
       localStorage.setItem("dataArray", JSON.stringify(updatedData));
+      setLike("false");
     }
-
-    setLike(!like);
 
     // storeLike.push(id);
     // console.log(`this value is storeLike ${storeLike}`);
@@ -38,7 +38,7 @@ const Card = ({ url }) => {
           className="absolute bottom-2 right-2 bg-blue-600 text-white py-1 px-3 rounded-md hover:bg-blue-700"
           style={{ zIndex: 10 }}
         >
-          {like ? "UnLike" : "like"}
+          {like === "true" ? "UnLike" : "like"}
         </button>
       </div>
     </div>
