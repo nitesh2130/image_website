@@ -40,14 +40,16 @@ const Body = ({ imgKeyword }) => {
           url={image?.links?.download}
         />
       ))}
-      <button
-        onClick={() => {
-          setPage((prevPage) => prevPage + 10); // Correct way to update state
-        }}
-        className="flex justify-center p-2 m-3 bg-orange-300 rounded-lg"
-      >
-        Load More
-      </button>
+      {imgData && (
+        <button
+          onClick={() => {
+            setPage((prevPage) => prevPage + 10); // Correct way to update state
+          }}
+          className="flex justify-center p-2 m-3 bg-orange-300 rounded-lg"
+        >
+          Load More
+        </button>
+      )}
     </div>
   );
 };

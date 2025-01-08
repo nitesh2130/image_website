@@ -1,7 +1,9 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
-
+import { Router, Routes, Route } from "react-router-dom";
 import { useState } from "react";
+import { MdThumbUpOffAlt } from "react-icons/md";
+// import Favorite from "./Favorite";
 
 const navbar = ({ onSubmitData }) => {
   const [SubmittedValue, SetsubmitedValue] = useState("");
@@ -17,7 +19,7 @@ const navbar = ({ onSubmitData }) => {
   };
 
   return (
-    <div className="bg-black p-4">
+    <div className="bg-slate-400 p-4">
       <div className="flex items-center justify-between">
         <div className="text-white text-xl font-bold ">
           <img
@@ -27,6 +29,17 @@ const navbar = ({ onSubmitData }) => {
           />
         </div>
         <div className="flex items-center space-x-2">
+          <div>
+            <MdThumbUpOffAlt className="size-6" />
+            {/* <Router>
+              <a href="/Favorite">
+                <MdThumbUpOffAlt />
+              </a>
+              <Routes>
+                <Route path="./Favorite" element={<Favorite />} />
+              </Routes>
+            </Router> */}
+          </div>
           <input
             type="text"
             value={InputText}
